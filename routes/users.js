@@ -92,7 +92,7 @@ router.get('/login', (req, res) => {
   // Login Handle
   router.post('/login', (req, res, next) => {
       passport.authenticate('local', {
-          successRedirect: '/clubs/golf-bag',
+          successRedirect: '/users/caddy',
           failureRedirect: '/users/login',
           failureFlash: true
       })(req, res, next);

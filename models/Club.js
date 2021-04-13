@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const ClubSchema = new mongoose.Schema({
-    manufacturure: { type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
+    manufacturer: String,
     // Iron, Wood, Driver, Hybrid, Putter etc.
     type: String,
     // Iron/Wood #
@@ -10,6 +10,7 @@ const ClubSchema = new mongoose.Schema({
     name: String,
     // URL to club page
     url: String,
+    image_url: String,
     rating: Number
 });
 

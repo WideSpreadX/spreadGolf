@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const GolfBagSchema = new mongoose.Schema({
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     manufacturure: { type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
     clubs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Club'}],
     // Actual Club Name in English (or whatever language)

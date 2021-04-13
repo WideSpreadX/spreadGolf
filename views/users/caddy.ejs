@@ -1,11 +1,78 @@
 <style>
-
+    .welcome-container {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .user-club-selection {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 8px;
+    }
+    .user-club-selection h5 {
+        padding: 10px;
+        text-align: center;
+        border-bottom: groove 1px green;
+        background: rgba(0, 128, 0, 0.3);
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .clubs {
+        padding: 10px;
+    }
 </style>
 
 <div class="page-title">
     <h1>Caddy Home</h1>
 </div>
 
+<div class="welcome-container">
+    <h3>Welcome <%= user.fname %></h3>
+</div>
+
 <div class="user-club-selection">
     <h5>Your Current Club Selection</h5>
+    <div class="clubs">
+        <p>Driver</p>
+        <p>3-Wood</p>
+        <p>5-Wood</p>
+        <p>9 Hybrid</p>
+        <p>8 Hybrid</p>
+        <p>7 Hybrid</p>
+        <p>6 Hybrid</p>
+        <p>5 Hybrid</p>
+        <p>4 Hybrid</p>
+        <p>3 Hybrid</p>
+        <p>2 Hybrid</p>
+        <p>1 Hybrid</p>
+        <p>9 Iron</p>
+        <p>8 Iron</p>
+        <p>7 Iron</p>
+        <p>6 Iron</p>
+        <p>5 Iron</p>
+        <p>4 Iron</p>
+        <p>3 Iron</p>
+        <p>2 Iron</p>
+        <p>1 Iron</p>
+        <p>Sand Wedge</p>
+        <p>Pitch Wedge</p>
+        <p>Attack Wedge</p>
+        <p>Loft Wedge</p>
+        <p>Gap Wedge</p>
+        <p>Chipping Putter</p>
+        <p>Putter</p>
+    </div>
+</div>
+
+<div class="add-form">
+    <form action="/clubs/add" method="post">
+        <input type="text" name="manufacturer" placeholder="Manufacturer">
+        <input type="text" name="type" placeholder="Club Type">
+        <input type="text" name="number" placeholder="Club Loft Number">
+        <input type="text" name="name" placeholder="Club Name">
+        <input type="text" name="url" placeholder="Club URL">
+        <input type="text" name="image_url" placeholder="Club Image URL">
+        <button type="submit">Add Club</button>
+    </form>
 </div>

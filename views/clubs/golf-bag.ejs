@@ -1,0 +1,52 @@
+<style>
+    .your-clubs {
+        margin-top: 20px;
+    }
+    .club {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        margin-bottom: 20px;
+        display: inline-flex;
+    }
+    .club-data {
+        width: 80%;
+        padding: 10px;
+    }
+    .club-image {
+        width: 20%;
+
+    }
+    .club-image img {
+        width: 100%;
+    }
+</style>
+
+<div class="page-title">
+    <h1>Your Golf Bag</h1>
+</div>
+
+<div class="user-club-selection">
+    <h5>Your Current Club Selection</h5>
+</div>
+
+<div class="new-clubs">
+    <h5>New Clubs for Sale</h5>
+</div>
+
+<div class="your-clubs">
+    <h1 style="text-align: center; padding: 10px;">Your Clubs</h1>
+    <% clubs.forEach(function(club) { %>
+        <div class="club">
+            <div class="club-data">
+                <h3><%= club.manufacturer %></h3>
+                <h3><%= club.number %> <%= club.type %></h3>
+                <h4><%= club.name %></h4>
+                <p><a href="<%= club.url %>" target="_blank">Go To Site</a></p>
+            </div>
+            <div class="club-image">
+                <img src="<%= club.image_url %>" alt="">
+            </div>
+        </div>
+    <% }) %>
+</div>

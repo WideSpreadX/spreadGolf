@@ -82,7 +82,7 @@
         backdrop-filter: blur(2px);
         text-align: center;
         font-size: 1rem;
-        box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);     
+        box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);
         padding-bottom: 0;   
         padding-top: 10px;   
     }
@@ -103,13 +103,61 @@
     .data-map iframe {
         border-radius: 8px;
     }
+    .begin-match button {
+        width: 90%;
+        margin-left: 5%;
+        background: green;
+        padding: 10px;
+        color: #fff;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        box-shadow: 0 4px 4px  rgba(0, 0, 0, 0.6);
+    }
+    .scorecard-history {
+        text-align: center;
+        color: green;
+        background:rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+    }
+    .scorecard-history h3 {
+        padding: 15px;
+        padding-top: 5px;
+        font-size: 2rem;
+    }
+    .scorecard-history p {
+        padding: 5px;
+        font-size: 1.5rem;
+
+    }
+    .scorecard-history a {
+        text-decoration: none;
+        color: #fff;
+    }
 </style>
 
 <div class="page-title">
     <h1><%= course.name %></h1>
 </div>
 
+<div class="begin-match">
+    <form action="/courses/course/<%= course.id %>/<%= userId %>/scorecard/new" method="post">
+        <button type="submit">Begin New Match</button>
+    </form>
+</div>
 
+<div class="scorecard-history">
+    <h3>Your Course History</h3>
+    <% scorecards.forEach(function(scorecard) { %>
+        <div class="scorecard-link">
+          <p><a href="/courses/course/<%= course.id %>/scorecard/<%= scorecard.id %>"><%= scorecard.date_played.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %></a></p>
+        </div>
+    <% }) %>
+</div>
 <h1 style="text-align: center; padding: 10px;">Holes</h1>
 <div class="holes">
     <% holes.forEach(function(hole) { %>

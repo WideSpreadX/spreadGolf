@@ -1,0 +1,76 @@
+<style>
+    .your-clubs {
+        margin-top: 20px;
+    }
+    .club {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        margin-bottom: 20px;
+        display: inline-flex;
+    }
+    .club-data {
+        width: 80%;
+        padding: 10px;
+    }
+    .club-image {
+        width: 20%;
+
+    }
+    .club-image img {
+        width: 100%;
+    }
+    button {
+        color: #fff;
+        padding: 5px;
+        background: green;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="page-title">
+    <h1>Your Golf Bag</h1>
+</div>
+
+<div class="your-clubs">
+    <h1 style="text-align: center; padding: 10px;">Current Clubs</h1>
+    <% golfBag.clubs.forEach(function(club) { %>
+        <div class="club">
+            <div class="club-data">
+                <h3><%= club.manufacturer %></h3>
+                <h3><%= club.number %> <%= club.type %></h3>
+                <h4><%= club.name %></h4>
+                <form action="/clubs/golf-bag/<%= golfBag.id %>/remove-club/<%= club.id %>?_method=PATCH" method="post">
+                    <input type="text" name="clubId" value="<%= club.id %>" hidden>
+                    <button type="submit"><p><i class="fas fa-minus-circle"></i> Remove from Golf Bag</p></button>
+                </form>
+            </div>
+            <div class="club-image">
+                <img src="<%= club.image_url %>" alt="">
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+<div class="your-clubs">
+    <h1 style="text-align: center; padding: 10px;">Choose Your Clubs</h1>
+    <% clubs.forEach(function(club) { %>
+        <div class="club">
+            <div class="club-data">
+                <h3><%= club.manufacturer %></h3>
+                <h3><%= club.number %> <%= club.type %></h3>
+                <h4><%= club.name %></h4>
+                <form action="/clubs/golf-bag/<%= golfBag.id %>/add-club/<%= club.id %>?_method=PATCH" method="post">
+                    <button type="submit"><p><i class="fas fa-plus-circle"></i> Add to Golf Bag</p></button>
+                </form>
+            </div>
+            <div class="club-image">
+                <img src="<%= club.image_url %>" alt="">
+            </div>
+        </div>
+    <% }) %>
+</div>
+

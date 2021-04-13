@@ -12,6 +12,73 @@
         text-align: center;
         padding: 5px;
     }
+    .scorecard {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 20px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);
+        display: inline-flex;
+        overflow-x: scroll;
+    }
+    .scorecard table {
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 10px;
+    }
+    tr:last-of-type {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .scorecard th {
+        font-size: 1.5rem;
+        border-bottom: groove 1px green;
+        background: rgba(0, 128, 0, 0.3);
+        
+    }
+    .scorecard th:first-of-type {
+        border-top-left-radius: 8px;
+    }
+    .scorecard th:last-of-type {
+        border-top-right-radius: 8px;
+    }
+    td {
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);    
+        font-size: 1.2rem;
+        width: 60px;
+    }
+    td input {
+        max-width: 50px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-left: 5px;
+        padding: 3px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.5);
+        margin-top: 5px;
+    }
+    td button {
+        width: 56px;
+        margin-left: 5px;
+        margin-top: 0;
+        font-size: 48px;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border: none;
+        outline: none;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+        padding-top: 3px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5), 0 -1px 1px rgba(0, 0, 0, 0.5);
+        border-top: groove 1px green;
+    }
     .next-hole {
         width: 90%;
         margin-left: 5%;
@@ -72,7 +139,7 @@
 </style>
 
 <div class="page-title">
-    <h1>Scorecard</h1>
+    <h1>Scorecard <i class="fas fa-golf-ball"></i></h1>
 </div>
 
 <div class="scorecard-container">
@@ -82,6 +149,64 @@
     <h5>Current Wind Speed:</h5>
     <h5>Current Wind Direction:</h5>
 </div>
+<div class="scorecard">
+    <table cellspacing="0">
+        <tr>
+            <% holes.forEach(function(hole) { %>
+                <div class="hole-number">
+                    <th><h3><%= hole.hole_number %></h3></th>
+                    
+                    
+                </div>
+                <% }) %>
+                
+        </tr>
+        <tr>
+            <% holes.forEach(function(hole) { %>
+                <div class="hole-par">
+                    <td><h5>Par <%= hole.par %></h5></td>
+                </div>
+            <% }) %>
+        </tr>
+        <tr style="color: rgba(255, 0, 0, 0.3);">
+            <% holes.forEach(function(hole) { %>
+                <div class="hole-distance">
+                    <td><h5><%= hole.tee_a.total_distance %></h5></td>
+                </div>
+            <% }) %>
+        </tr>
+        <tr>
+            <% holes.forEach(function(hole) { %>
+                <div class="hole-distance">
+                    <td><h5><%= hole.tee_b.total_distance %></h5></td>
+                </div>
+            <% }) %>
+        </tr>
+        <tr style="color: rgba(0, 0, 255, 0.3);">
+            <% holes.forEach(function(hole) { %>
+                    <td><h5><%= hole.tee_c.total_distance %></h5></td>
+            <% }) %>
+        </tr>
+        <tr style="color: rgba(0, 0, 255, 0.3);">
+            <% holes.forEach(function(hole) { %>
+                    <td>
+                        <form action="/courses/course/<%= course.id %>/scorecard/<%= userId %>/<%= scorecardId %>/<%= hole.id %>/add-score?_method=PATCH" method="post">
+                            <input style="margin-bottom: 0;" type="number" name="strokes" placeholder="Strokes" value="<%= hole.strokes %>">
+                            <input style="border-radius: 0; margin-top: 0;" type="number" name="mulligans" placeholder="Mulligans">
+                            <input style="border-radius: 0;" type="number" name="penalties" placeholder="Penalty">
+                            <button type="submit"><i class="fas fa-plus-circle"></i></button>
+                        </form>
+                    </td>
+            <% }) %>
+        </tr>
+        <tr style="color: #fff; padding: 5px;">
+            <% scorecard.holes.forEach(function(score) { %>
+                    <td><h5 style="font-size: 3rem;"><%= score.strokes %></h5></td>
+            <% }) %>
+        </tr>
+    </table>
+</div>
+
 
 <div class="next-hole">
     <h3>Hole 1</h3>

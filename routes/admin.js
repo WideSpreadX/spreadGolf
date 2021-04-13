@@ -8,13 +8,14 @@ const Hole = require('../models/Hole');
 
 
 // Welcome Page
-router.get('/', (req, res) => {
-      res.render('./admin/home');
+router.get('/', async (req, res) => {
+      const courses = await GolfCourse.find();
+      res.render('./admin/home', {courses});
 });
 
 // Course Page
-router.get('/course', (req, res) => {
-      res.render('./admin/course');
+router.get('/course', async (req, res) => {
+      res.render('./admin/course', {courses});
 });
 
 // Add New Course

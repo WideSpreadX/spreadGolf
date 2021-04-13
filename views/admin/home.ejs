@@ -23,3 +23,9 @@
         <button type="submit">Add Course</button>
     </form>
 </div>
+
+<% courses.forEach(function(course) { %>
+    <div class="course-link">
+        <h3><a href="/admin/course/<%= course.id %>"><%= course.name %></a></h3>
+    </div>
+<% }) %>

@@ -1,5 +1,71 @@
+<style>
+    .login-form {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        margin-top: 100px;
+        text-align: center;
+    }
+    .login-form h5 {
+        text-align: center;
+        color: green;
+        padding: 10px;
+    }
+    .input-group {
+        padding: 10px;
+        margin-bottom: 5px;
+        width: 90%;
+        position: relative;
+    }
+    .input-group label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-left: 10px;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+        font-size: 1.5rem;
+    }
+    .input-group input {
+        width: 100%;
+        border-radius: 5px;
+        padding: 5px;
+        background: rgba(0, 128, 0, 0.3);
+        color: #fff;
+        outline: none;
+        border: none;
+        font-size: 1.5rem;
+    }
+
+    .input-group input::placeholder {
+        color: #fff;
+    }
+    .login-form button {
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        background: green;
+        color: #fff;
+        padding: 10px;
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .create-account {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(4px);
+        margin-top: 30px;
+        padding: 10px;
+        padding-left: 0;
+        text-align: center;
+    }
+    .next-button {
+        display: none;
+    }
+    .create-account h1 {
+        color: green;
+    }
+</style>
 <div class="create-account" style="margin-top: 45px;">
-    <div class="text-center">
         <div class="create-account-btns">
           <h1>
       <i class="fas fa-user-plus"></i> Register
@@ -7,8 +73,6 @@
     <%- include ('./partials/messages') %>
     <form action="/users/register" method="POST">
       <div class="form-container">
-      <small>Scroll right to advance to the next input</small>
-      <div class="input-scroller" style="display: inline-flex; width: 100%; overflow-x: scroll;">
       <div class="input-group">
         <div class="input-data">
 
@@ -95,9 +159,9 @@
         </div>
       </div>
     </div>
-    </div>
     </form>
-    <p class="lead mt-4">Have An Account? <a href="/users/login" style="color: lightskyblue; background: none; border: none;">Login</a></p>
-  </div>
-    </div>
-  </div>
+</div>
+</div>
+<div class="create-account">
+    <p class="lead mt-4">Have An Account? <a href="/users/login" style="color: #fff; text-decoration: none;">Login</a></p>
+</div>

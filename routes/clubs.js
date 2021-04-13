@@ -20,7 +20,7 @@ router.get('/golf-bag', ensureAuthenticated, async (req, res) => {
 });
 
 // Golf Bag ID Page
-router.get('/golf-bag/:golfBagId', ensureAuthenticated, async (req, res) => {
+router.get('/golf-bag/id/:golfBagId', ensureAuthenticated, async (req, res) => {
       const golfBagId = req.params.golfBagId;
       const clubs = await Club.find();
       const user = req.user._id;
@@ -69,7 +69,7 @@ router.patch('/golf-bag/:golfBagId/add-club/:clubId', ensureAuthenticated, async
                 }
             }
             )
-            res.redirect(`/clubs/golf-bag/${golfBagId}`);
+            res.redirect(`/clubs/golf-bag/id/${golfBagId}`);
 });
 
 // Remove Golf Club to Golf Bag
@@ -86,7 +86,7 @@ router.patch('/golf-bag/:golfBagId/remove-club/:clubId', ensureAuthenticated, as
                 }
             }
             )
-            res.redirect(`/clubs/golf-bag/${golfBagId}`);
+            res.redirect(`/clubs/golf-bag/id/${golfBagId}`);
 });
 
 

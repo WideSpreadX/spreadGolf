@@ -1,0 +1,73 @@
+<style>
+    .user-course-selection {
+        text-align: center;
+        color: #fff;
+        font-size: 2rem;
+    }
+    .all-courses {
+        margin-top: 20px;
+    }
+    .course {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        text-align: center;
+        font-size: 1rem;
+        box-shadow: 0 2px 2px  rgba(0, 0, 0, 0.6);     
+        padding-bottom: 0;   
+    }
+    .course-name {
+        color: #fff;
+        background: rgba(0, 128, 0, 0.3);
+        border-bottom: groove 2px green;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+    .data-map {
+        max-height: 275px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .data-map iframe {
+        border-radius: 8px;
+    }
+</style>
+
+<div class="page-title">
+    <h1>Courses Home</h1>
+</div>
+
+<div class="user-course-selection">
+    <h5>Your Courses</h5>
+</div>
+
+<div class="all-courses">
+    <% allCourses.forEach(function(course) { %>
+        <a href="/courses/course/<%= course.id %>">
+            <div class="course">
+                <div class="course-name">
+                    <h3><%= course.name %></h3>
+                </div>
+                <div class="course-data">
+                    <div class="data-text">
+                        <p><%= course.url %></p>
+                        <p><small><%= course.address.street_1 %></small></p>
+                        <p><small><%= course.address.city %></small></p>
+                        <p><small><%= course.address.state %></small></p>
+                        <p><small><%= course.address.zip %></small></p>
+                        <p><small><%= course.address.country %></small></p>
+                    </div>
+                    <div class="data-map">
+                        <iframe width="350" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-72.72087693214418%2C41.57464222202065%2C-72.70671486854555%2C41.5822826695133&amp;layer=hot"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=17/<%= course.address.location.coordinates[0] %>/<%= course.address.location.coordinates[1] %>&amp;layers=H">View Larger Map</a></small>
+                    </div>
+                </div>
+            </div>
+        </a>
+    <% }) %>
+</div>
+

@@ -1,0 +1,64 @@
+<style>
+    .hole {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(2px);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .hole-data {
+        padding: 10px;
+    }
+    .hole-data h1 {
+        border-bottom: solid 1px #000;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="page-title">
+    <h1><%= course.name %></h1>
+</div>
+
+<% holes.forEach(function(hole) { %>
+    <div class="hole">
+        <div class="hole-data">
+            <h1>Hole <%= hole.hole_number %></h1>
+            <h3>Par <%= hole.par %></h3>
+            <h5>Total Yards</h5>
+            <p><%= hole.tee_a.total_distance %></p>
+            <p><%= hole.tee_b.total_distance %></p>
+            <p><%= hole.tee_c.total_distance %></p>
+            <p><%= hole.tee_d.total_distance %></p>
+        </div>
+
+    </div>
+<% }) %>
+
+
+<div class="add-form">
+    <form action="/admin/<%= course.id %>/hole/add" method="post">
+        <input type="number" name="hole_number" placeholder="Hole Number">
+        <input type="number" name="par" placeholder="Par">
+        <p>Tee A (closest to pin)</p>
+        <input type="number" name="totalDistanceA" placeholder="Total Distance">
+        <input type="text" name="coordinatesXA" placeholder="X Coordinates">
+        <input type="text" name="coordinatesYA" placeholder="Y Coordinates">
+        <p>Tee B</p>
+        <input type="number" name="totalDistanceB" placeholder="Total Distance">
+        <input type="text" name="coordinatesXB" placeholder="X Coordinates">
+        <input type="text" name="coordinatesYB" placeholder="Y Coordinates">
+        <p>Tee C</p>
+        <input type="number" name="totalDistanceC" placeholder="Total Distance">
+        <input type="text" name="coordinatesXC" placeholder="X Coordinates">
+        <input type="text" name="coordinatesYC" placeholder="Y Coordinates">
+        <p>Tee D (furthest from pin)</p>
+        <input type="number" name="totalDistanceD" placeholder="Total Distance">
+        <input type="text" name="coordinatesXD" placeholder="X Coordinates">
+        <input type="text" name="coordinatesYD" placeholder="Y Coordinates">
+        <p>Hole</p>
+        <input type="text" name="coordinatesXHole" placeholder="X Coordinates">
+        <input type="text" name="coordinatesYHole" placeholder="Y Coordinates">
+        <button type="submit">Add Hole</button>
+    </form>
+</div>

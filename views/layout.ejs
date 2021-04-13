@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpreadGolf</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@300&family=Tangerine&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/080e00a6ec.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            min-height: 100vh;
+            z-index: -99999;
+        }
+        .background-container img {
+            width: 100%;
+            min-height: 100%;
+        }
+        .main-container {
+            padding-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container">
+        <img src="https://wallpaperset.com/w/full/4/e/4/496183.jpg" alt="">
+    </div>
+    <div class="main-container">
+        <%- body %>
+    </div>
+    <div class="main-menu">
+        <div class="menu-slider">
+            <div class="menu-item"><p><a href="/users/caddy">Caddy</a></p></div>
+            <div class="menu-item"><p><a href="/courses">Courses</a></p></div>
+            <div class="menu-item"><p><a href="/courses/scorecard">Scorecards</a></p></div>
+            <div class="menu-item"><p><a href="">History</a></p></div>
+            <div class="menu-item"><p><a href="">Settings</a></p></div>
+            <div class="menu-item"><p><a href="">Help</a></p></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -26,16 +26,20 @@
     <h1>Your Golf Bag</h1>
 </div>
 
-<div class="user-club-selection">
-    <h5>Your Current Club Selection</h5>
-</div>
 
-<div class="new-clubs">
-    <h5>New Clubs for Sale</h5>
+<div class="your-golf-bag">
+    <h1><a href="/clubs/golf-bag/<%= golfBag.id %>"><%= golfBag.name %></a></h1>
+    
 </div>
-
+<div class="add-form">
+    <form action="/clubs/golf-bag/add" method="post">
+        <input type="text" name="manufacturer" placeholder="Manufacturer">
+        <input type="text" name="name" placeholder="Name for your bag">
+        <button type="submit">Add Bag</button>
+    </form>
+</div>
 <div class="your-clubs">
-    <h1 style="text-align: center; padding: 10px;">Your Clubs</h1>
+    <h1 style="text-align: center; padding: 10px;">All Clubs</h1>
     <% clubs.forEach(function(club) { %>
         <div class="club">
             <div class="club-data">
@@ -49,4 +53,9 @@
             </div>
         </div>
     <% }) %>
+</div>
+
+
+<div class="new-clubs">
+    <h5>New Clubs for Sale</h5>
 </div>
